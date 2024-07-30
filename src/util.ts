@@ -30,15 +30,15 @@ export function sanitizeString(str: string): string {
     .replace(/[\u{1FA70}-\u{1FAFF}]/gu, "")
     .replace(/[\u{2600}-\u{26FF}]/gu, "")
     .replace(/[\u{2700}-\u{27BF}]/gu, "")
-  // Remove leading numbers
-  sanitized = sanitized.replace(/^\d+/, "")
   // Remove extra whitespace
   sanitized = sanitized.replace(/\s+/g, " ").trim()
   // Replace specific substrings
   sanitized = sanitized
-    .replace(/3rd/g, "third")
-    .replace(/1st/g, "first")
+    .replace(/\b3rd\b/gi, "third")
+    .replace(/\b1st\b/gi, "first")
     .replace(/#/g, "num")
+  // Remove leading numbers
+  sanitized = sanitized.replace(/^\d+/, "")
   // Remove punctuation
   sanitized = sanitized.replace(/[^\w\s]/g, "")
   // Convert to camelCase
