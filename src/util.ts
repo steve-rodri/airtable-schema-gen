@@ -1,4 +1,5 @@
 import camelCase from "lodash.camelcase"
+import fs from "fs"
 
 import { FIELD_TYPE_MAP } from "./types"
 
@@ -6,6 +7,12 @@ export function capitalizeFirstLetter(str: string): string {
   const letters = str.split("")
   letters[0] = letters[0].toUpperCase()
   return letters.join("")
+}
+
+export function createFolderIfNotExists(folderPath: string) {
+  if (!fs.existsSync(folderPath)) {
+    fs.mkdirSync(folderPath, { recursive: true })
+  }
 }
 
 export function escapeQuotes(str: string): string {
