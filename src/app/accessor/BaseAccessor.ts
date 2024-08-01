@@ -1,10 +1,10 @@
-import { Field, Table, TransformedTable } from "./types"
-import { BASE_ID, BASE_NAME } from "./config"
+import { Field, Table, TransformedTable } from "../../types"
+import { BASE_ID, BASE_NAME } from "../../infra/config"
 import {
   escapeQuotes,
   generateObjectString,
   sanitizeString,
-} from "./string-util"
+} from "../../utils/string-util"
 
 export default class BaseAccessor {
   private tables: Table[]

@@ -1,7 +1,7 @@
-import { BASE_NAME } from "./config"
-import { generateBaseAccessor } from "./generateBaseAccessor"
-import { generateZodSchemas } from "./generateZodSchemas"
-import { sanitizeString } from "./string-util"
+import { BASE_NAME } from "./infra/config"
+import { generateBaseAccessor } from "./app/accessor/generateBaseAccessor"
+import { generateZodSchemas } from "./app/schemas/generateZodSchemas"
+import { sanitizeString } from "./utils/string-util"
 
 async function main() {
   const baseName = sanitizeString(BASE_NAME ?? "Default")

@@ -1,11 +1,11 @@
 import pluralize from "pluralize"
 
-import { Field, FIELD_TYPE_MAP, Table } from "./types"
+import { Field, FIELD_TYPE_MAP, Table } from "../../types"
 import {
   capitalizeFirstLetter,
   escapeQuotes,
   sanitizeString,
-} from "./string-util"
+} from "../../utils/string-util"
 
 export default class AirtableZodSchema {
   private tableName: string

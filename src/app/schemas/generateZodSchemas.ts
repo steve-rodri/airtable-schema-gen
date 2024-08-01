@@ -1,8 +1,8 @@
-import { getTables } from "./api"
-import { BASE_ID } from "./config"
-import { writeFileToDist } from "./util"
 import AirtableZodSchema from "./AirtableZodSchema"
-import { Table } from "./types"
+import { getTables } from "../../infra/api"
+import { BASE_ID } from "../../infra/config"
+import { Table } from "../../types"
+import { writeFileToDist } from "../../utils/file-util"
 
 const fileHeader =
   "/* THIS FILE WAS AUTO GENERATED USING A SCRIPT. DO NOT EDIT MANUALLY.*/\n\nimport { z } from 'zod'\n\n"

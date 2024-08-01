@@ -1,5 +1,5 @@
 import { API_KEY } from "./config"
-import { Table } from "./types"
+import { Table } from "../types"
 
 export async function getTables(baseId: string) {
   const response = await fetch(

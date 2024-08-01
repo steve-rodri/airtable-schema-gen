@@ -1,7 +1,7 @@
 import BaseAccessor from "./BaseAccessor"
-import { getTables } from "./api"
-import { BASE_ID } from "./config"
-import { writeFileToDist } from "./util"
+import { getTables } from "../../infra/api"
+import { BASE_ID } from "../../infra/config"
+import { writeFileToDist } from "../../utils/file-util"
 
 const fileHeader =
   "/* THIS FILE WAS AUTO GENERATED USING A SCRIPT. DO NOT EDIT MANUALLY.*/\n\n"
