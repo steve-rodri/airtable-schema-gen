@@ -25,10 +25,14 @@ export default class BaseAccessor {
     return uniqueFields.reduce(
       (obj, field) => {
         const sanitizedFieldName = sanitizeString(field.name)
-        obj[sanitizedFieldName] = field.id
+        obj[sanitizedFieldName] = {
+          id: field.id,
+          name: field.name,
+          type: field.type,
+        }
         return obj
       },
-      {} as Record<string, string>,
+      {} as Record<string, Field>,
     )
   }
 

@@ -26,5 +26,5 @@ export const FIELD_TYPE_MAP: Record<string, string> = {
 
 export type TransformedTable = {
   id: string
-  fields: Record<string, string>
+  fields: Record<string, Field>
 }
