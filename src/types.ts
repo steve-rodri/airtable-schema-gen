@@ -5,6 +5,7 @@ export interface Table {
 }
 
 export interface Field {
+  id: string
   name: string
   type: string
 }
@@ -21,4 +22,9 @@ export const FIELD_TYPE_MAP: Record<string, string> = {
   date: "z.date()",
   dateTime: "z.date()",
   default: "z.any()",
+}
+
+export type TransformedTable = {
+  id: string
+  fields: Record<string, string>
 }
