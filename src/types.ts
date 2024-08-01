@@ -19,8 +19,8 @@ export const FIELD_TYPE_MAP: Record<string, string> = {
   phoneNumber: "z.string()",
   number: "z.number()",
   checkbox: "z.boolean()",
-  date: "z.date()",
-  dateTime: "z.date()",
+  date: "z.string()",
+  dateTime: "z.string()",
   default: "z.any()",
 }
 
