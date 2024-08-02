@@ -29,7 +29,7 @@ export const getArgs = () => {
     })
     .option("out-dir", {
       alias: "o",
-      description: "Output directory.",
+      description: "Output directory. (optional: defaults to 'out')",
       type: "string",
     })
     .option("schema-output-dir", {

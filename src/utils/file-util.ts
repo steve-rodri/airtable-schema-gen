@@ -9,7 +9,7 @@ function createFolderIfNotExists(folderPath: string) {
 }
 
 export function writeFileToPath({
-  filePath = "dist",
+  filePath = "out",
   filename,
   content,
 }: WriteFileOptions) {
