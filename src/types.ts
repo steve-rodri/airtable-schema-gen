@@ -29,3 +29,9 @@ export interface Arguments {
   accessorOutput?: string
   verbose?: boolean
 }
+
+export interface WriteFileOptions {
+  filePath?: string
+  filename: string
+  content: string
+}

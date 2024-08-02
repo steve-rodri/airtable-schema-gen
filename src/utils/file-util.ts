@@ -1,5 +1,6 @@
 import fs from "fs"
 import path from "path"
+import { WriteFileOptions } from "../types"
 
 function createFolderIfNotExists(folderPath: string) {
   if (!fs.existsSync(folderPath)) {
@@ -7,8 +8,11 @@ function createFolderIfNotExists(folderPath: string) {
   }
 }
 
-export function writeFileToPath(filePath: string, content: string) {
-  const distPath = path.join(__dirname, filePath)
-  createFolderIfNotExists(distPath)
-  fs.writeFileSync(distPath, content)
+export function writeFileToPath({
+  filePath = "dist",
+  filename,
+  content,
+}: WriteFileOptions) {
+  createFolderIfNotExists(filePath)
+  fs.writeFileSync(path.join(filePath, filename), content)
 }

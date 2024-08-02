@@ -8,5 +8,7 @@ export async function getTables(baseId: string, tableIds?: string[]) {
       headers: { Authorization: `Bearer ${API_KEY}` },
     },
   )
-  return (await response.json()).tables as Table[]
+  const tables = (await response.json()).tables as Table[]
+  if (tableIds) return tables.filter((t) => tableIds.includes(t.id))
+  return tables
 }

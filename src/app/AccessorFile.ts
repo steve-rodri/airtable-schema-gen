@@ -74,10 +74,10 @@ export default class AccessorFile {
 
   generate(args: Arguments) {
     try {
-      const fileContent = this.generateFileContent()
+      const content = this.generateFileContent()
       const filename = `${this.airtableData.base.name}Base.accessor.ts`
-      const outDir = args.accessorOutput ?? args.output ?? "dist"
-      writeFileToPath(`${outDir}/${filename}`, fileContent)
+      const outDir = args.accessorOutput ?? args.output
+      writeFileToPath({ filePath: outDir, filename, content })
       console.info(
         `SDK accessor generated for ${this.airtableData.base.name} at dist/${filename}`,
       )

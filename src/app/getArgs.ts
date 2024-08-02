@@ -1,13 +1,14 @@
 import yargs from "yargs"
 import { hideBin } from "yargs/helpers"
 import { Arguments } from "../types"
+import { BASE_ID, BASE_NAME } from "../infra/config"
 
 export const getArgs = () => {
   const argv = yargs(hideBin(process.argv))
     .option("base-id", {
       description: "Your Airtable base id. (required)",
       type: "string",
-      demandOption: true,
+      demandOption: !Boolean(BASE_ID),
     })
     .option("base-name", {
       description:
@@ -41,10 +42,12 @@ export const getArgs = () => {
     .help()
     .alias("help", "h").argv as Arguments
 
-  const { baseName, tableIds, output, schemaOutput, accessorOutput, verbose } =
-    argv
+  const { tableIds, output, schemaOutput, accessorOutput, verbose } = argv
+  const baseId = argv.baseId || BASE_ID
+  const baseName = argv.baseName || BASE_NAME
 
   if (verbose) {
+    console.log(`Base ID: ${baseId}`)
     console.log(`Base name: ${baseName}`)
     console.log(`Table IDs: ${tableIds}`)
     if (output) console.log(`Output file: ${output}`)
@@ -52,5 +55,5 @@ export const getArgs = () => {
     if (accessorOutput) console.log(`Accessor output file: ${accessorOutput}`)
   }
 
-  return argv
+  return { ...argv, baseId, baseName }
 }

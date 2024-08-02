@@ -1,4 +1,4 @@
-import { getArgs } from "./app/args"
+import { getArgs } from "./app/getArgs"
 import { getAirtableData } from "./app/getAirtableData"
 import AccessorFile from "./app/AccessorFile"
 import SchemasFile from "./app/SchemasFile"
