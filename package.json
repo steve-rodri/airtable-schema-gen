@@ -1,12 +1,12 @@
 {
   "name": "airtable-schema-gen",
   "version": "1.0.0",
-  "main": "dist/main.js",
+  "main": "dist/main",
   "bin": {
-    "airtable-schema-gen": "dist/main.js"
+    "airtable-schema-gen": "dist/main"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "bun build ./src/main.ts --compile --outfile ./dist/main",
     "start": "tsx src/main.ts"
   },
   "keywords": [

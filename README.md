@@ -5,33 +5,33 @@ tables.
 
 We also ship an accessor to handle Airtable's JS SDK.
 
-## Installation
+## Usage
 
 ```sh
-npm install
+npx airtable-schema-gen
 ```
 
-## Environment Variables
+## CLI Options
 
-create a .env file and add the following:
+Options:
+      --version              Show version number                       [boolean]
+      --api-key              Your Airtable api key. Reads AIRTABLE_API_KEY in en
+                             vironment. (required)                      [string]
+      --base-id              Your Airtable base id. Reads AIRTABLE_BASE_ID in en
+                             vironment. (required)                      [string]
+      --base-name            Your Airtable base name. Used for the accessor. Rea
+                             ds AIRTABLE_BASE_NAME in environment. (optional: de
+                             faults to 'default')                       [string]
+      --table-ids            Space separated list of Airtable table IDs to inclu
+                             de (optional).                              [array]
+  -o, --out-dir              Output directory. (optional: defaults to 'out')
+                                                                        [string]
+      --schema-output-dir    Output directory for the schemas file.     [string]
+      --accessor-output-dir  Output directory for the accessor file.    [string]
+  -v, --verbose              Enable verbose logging.  [boolean] [default: false]
+  -h, --help                 Show help                                 [boolean]
 
-```sh
-AIRTABLE_API_KEY=
-AIRTABLE_BASE_ID=
-AIRTABLE_BASE_NAME=
-```
-
-## Generate Code
-
-```sh
-npm start
-```
-
-this will generate code in the dist folder
-
-## Example Usage
-
-Create an init file in the same folder as the generated code with the following:
+## Example
 
 ```ts
 import Airtable from "airtable"
