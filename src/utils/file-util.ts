@@ -7,8 +7,8 @@ function createFolderIfNotExists(folderPath: string) {
   }
 }
 
-export function writeFileToDist(filename: string, content: string) {
-  const distPath = path.join(__dirname, "../dist")
+export function writeFileToPath(filePath: string, content: string) {
+  const distPath = path.join(__dirname, filePath)
   createFolderIfNotExists(distPath)
-  fs.writeFileSync(path.join(distPath, filename), content)
+  fs.writeFileSync(distPath, content)
 }
