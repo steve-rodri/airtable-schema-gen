@@ -24,9 +24,9 @@ export interface Arguments {
   baseId: string
   baseName?: string
   tableIds?: string[]
-  output?: string
-  schemaOutput?: string
-  accessorOutput?: string
+  outDir?: string
+  schemaOutDir?: string
+  accessorOutDir?: string
   verbose?: boolean
 }
 

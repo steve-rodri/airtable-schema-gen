@@ -27,7 +27,7 @@ export default class SchemaGenerator {
       const { base } = this.airtableData
       const filename = `${base.name}Base.schemas.ts`
       const content = this.generateFileContent()
-      const outDir = args.schemaOutput ?? args.output
+      const outDir = args.schemaOutDir ?? args.outDir
       writeFileToPath({ filePath: outDir, filename, content })
       console.info(
         `Zod schemas for all tables in ${base.name} generated in dist/${filename}`,

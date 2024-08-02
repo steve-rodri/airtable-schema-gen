@@ -17,7 +17,7 @@ export const getArgs = () => {
     })
     .option("table-ids", {
       description:
-        "Comma separated list of Airtable table IDs to include (optional).",
+        "Space separated list of Airtable table IDs to include (optional).",
       type: "array",
     })
     .option("out-dir", {
@@ -42,7 +42,7 @@ export const getArgs = () => {
     .help()
     .alias("help", "h").argv as Arguments
 
-  const { tableIds, output, schemaOutput, accessorOutput, verbose } = argv
+  const { tableIds, outDir, schemaOutDir, accessorOutDir, verbose } = argv
   const baseId = argv.baseId || BASE_ID
   const baseName = argv.baseName || BASE_NAME
 
@@ -50,9 +50,11 @@ export const getArgs = () => {
     console.log(`Base ID: ${baseId}`)
     console.log(`Base name: ${baseName}`)
     console.log(`Table IDs: ${tableIds}`)
-    if (output) console.log(`Output file: ${output}`)
-    if (schemaOutput) console.log(`Schema output file: ${schemaOutput}`)
-    if (accessorOutput) console.log(`Accessor output file: ${accessorOutput}`)
+    if (outDir) console.log(`Output directory: ${outDir}`)
+    if (schemaOutDir)
+      console.log(`Schemas File output directory: ${schemaOutDir}`)
+    if (accessorOutDir)
+      console.log(`Accessor File output directory: ${accessorOutDir}`)
   }
 
   return { ...argv, baseId, baseName }
