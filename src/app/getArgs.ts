@@ -1,18 +1,25 @@
 import yargs from "yargs"
 import { hideBin } from "yargs/helpers"
 import { Arguments } from "../types"
-import { BASE_ID, BASE_NAME } from "../infra/config"
+import { API_KEY, BASE_ID, BASE_NAME } from "../infra/config"
 
 export const getArgs = () => {
   const argv = yargs(hideBin(process.argv))
+    .option("api-key", {
+      description:
+        "Your Airtable api key. Reads AIRTABLE_API_KEY in environment. (required)",
+      type: "string",
+      demandOption: !Boolean(BASE_ID),
+    })
     .option("base-id", {
-      description: "Your Airtable base id. (required)",
+      description:
+        "Your Airtable base id. Reads AIRTABLE_BASE_ID in environment. (required)",
       type: "string",
       demandOption: !Boolean(BASE_ID),
     })
     .option("base-name", {
       description:
-        "Your Airtable base name. Used for the accessor. (optional: defaults to 'default')",
+        "Your Airtable base name. Used for the accessor. Reads AIRTABLE_BASE_NAME in environment. (optional: defaults to 'default')",
       type: "string",
     })
     .option("table-ids", {
@@ -43,13 +50,15 @@ export const getArgs = () => {
     .alias("help", "h").argv as Arguments
 
   const { tableIds, outDir, schemaOutDir, accessorOutDir, verbose } = argv
+  const apiKey = argv.apiKey || API_KEY
   const baseId = argv.baseId || BASE_ID
   const baseName = argv.baseName || BASE_NAME
 
   if (verbose) {
+    console.log(`API key: ${Boolean(apiKey)}`)
     console.log(`Base ID: ${baseId}`)
     console.log(`Base name: ${baseName}`)
-    console.log(`Table IDs: ${tableIds}`)
+    if (tableIds) console.log(`Table IDs: ${tableIds}`)
     if (outDir) console.log(`Output directory: ${outDir}`)
     if (schemaOutDir)
       console.log(`Schemas File output directory: ${schemaOutDir}`)
@@ -57,5 +66,5 @@ export const getArgs = () => {
       console.log(`Accessor File output directory: ${accessorOutDir}`)
   }
 
-  return { ...argv, baseId, baseName }
+  return { ...argv, apiKey, baseId, baseName }
 }

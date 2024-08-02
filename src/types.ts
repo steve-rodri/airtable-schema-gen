@@ -21,6 +21,7 @@ export type TransformedTable = {
 }
 
 export interface Arguments {
+  apiKey: string
   baseId: string
   baseName?: string
   tableIds?: string[]
