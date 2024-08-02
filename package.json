@@ -1,15 +1,23 @@
 {
   "name": "airtable-schema-gen",
   "version": "1.0.0",
-  "main": "main.ts",
+  "main": "dist/main.js",
+  "bin": {
+    "airtable-schema-gen": "dist/main.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
     "start": "tsx src/main.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": [
+    "cli",
+    "airtable",
+    "zod",
+    "schema"
+  ],
+  "author": "Steve Rodriguez",
+  "license": "MIT",
+  "description": "A CLI tool to generate Zod schemas from Airtable records",
   "dependencies": {
     "airtable": "^0.12.2",
     "dotenv": "^16.4.5",
@@ -17,12 +25,12 @@
     "lodash.capitalize": "^4.2.1",
     "lodash.startcase": "^4.4.0",
     "pluralize": "^8.0.0",
-    "tsx": "^4.16.2",
-    "typescript": "^5.5.4",
     "yargs": "^17.7.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4",
     "@types/lodash.camelcase": "^4.3.9",
     "@types/lodash.capitalize": "^4.2.9",
     "@types/lodash.startcase": "^4.4.9",
