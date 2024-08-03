@@ -13,23 +13,24 @@ npx airtable-schema-gen
 
 ## CLI Options
 
-Options:
-      --version              Show version number                       [boolean]
-      --api-key              Your Airtable api key. Reads AIRTABLE_API_KEY in en
-                             vironment. (required)                      [string]
-      --base-id              Your Airtable base id. Reads AIRTABLE_BASE_ID in en
-                             vironment. (required)                      [string]
-      --base-name            Your Airtable base name. Used for the accessor. Rea
-                             ds AIRTABLE_BASE_NAME in environment. (optional: de
-                             faults to 'default')                       [string]
-      --table-ids            Space separated list of Airtable table IDs to inclu
-                             de (optional).                              [array]
-  -o, --out-dir              Output directory. (optional: defaults to 'out')
-                                                                        [string]
-      --schema-output-dir    Output directory for the schemas file.     [string]
-      --accessor-output-dir  Output directory for the accessor file.    [string]
-  -v, --verbose              Enable verbose logging.  [boolean] [default: false]
-  -h, --help                 Show help                                 [boolean]
+```sh
+--version              Show version number                       [boolean]
+--api-key              Your Airtable api key. Reads AIRTABLE_API_KEY in en
+                       vironment. (required)                      [string]
+--base-id              Your Airtable base id. Reads AIRTABLE_BASE_ID in en
+                       vironment. (required)                      [string]
+--base-name            Your Airtable base name. Used for the accessor. Rea
+                       ds AIRTABLE_BASE_NAME in environment. (optional: de
+                       faults to 'default')                       [string]
+--table-ids            Space separated list of Airtable table IDs to inclu
+                       de (optional).                              [array]
+--out-dir              Output directory. (optional: defaults to 'out')
+                                                                  [string]
+--schema-output-dir    Output directory for the schemas file.     [string]
+--accessor-output-dir  Output directory for the accessor file.    [string]
+-v, --verbose              Enable verbose logging.  [boolean] [default: false]
+-h, --help                 Show help                                 [boolean]
+```
 
 ## Example
 
