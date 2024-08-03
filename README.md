@@ -46,9 +46,6 @@ Airtable.configure({
   endpointUrl: "https://api.airtable.com",
 })
 
-export const defaultBase = Airtable.base(defaultBaseAccessor.id)
-export const { tables: defaultTables } = defaultBaseAccessor
-
 // You can export this from here or create an airtable object,
 // add this as a key, and export the airtable object instead.
 export const defaultBase = {
