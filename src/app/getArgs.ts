@@ -32,11 +32,11 @@ export const getArgs = () => {
       description: "Output directory. (optional: defaults to 'out')",
       type: "string",
     })
-    .option("schema-output-dir", {
+    .option("schema-out-dir", {
       description: "Output directory for the schemas file.",
       type: "string",
     })
-    .option("accessor-output-dir", {
+    .option("accessor-out-dir", {
       description: "Output directory for the accessor file.",
       type: "string",
     })
