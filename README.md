@@ -26,8 +26,8 @@ npx airtable-schema-gen
                        de (optional).                              [array]
 --out-dir              Output directory. (optional: defaults to 'out')
                                                                   [string]
---schema-output-dir    Output directory for the schemas file.     [string]
---accessor-output-dir  Output directory for the accessor file.    [string]
+--schema-out-dir       Output directory for the schemas file.     [string]
+--accessor-out-dir     Output directory for the accessor file.    [string]
 -v, --verbose              Enable verbose logging.  [boolean] [default: false]
 -h, --help                 Show help                                 [boolean]
 ```

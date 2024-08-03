@@ -1,13 +1,14 @@
 {
   "name": "airtable-schema-gen",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/main",
   "bin": {
     "airtable-schema-gen": "dist/main"
   },
   "scripts": {
     "build": "bun build ./src/main.ts --compile --outfile ./dist/main",
-    "start": "tsx src/main.ts"
+    "start": "tsx src/main.ts",
+    "deploy": "npm run build && npm publish"
   },
   "keywords": [
     "cli",
