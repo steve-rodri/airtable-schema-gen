@@ -1,3 +1,8 @@
+export interface AirtableData {
+  base: { id: string; name: string }
+  tables: Table[]
+}
+
 export interface Table {
   id: string
   name: string
@@ -10,21 +15,24 @@ export interface Field {
   type: string
 }
 
-export const FIELD_TYPE_MAP: Record<string, string> = {
-  singleLineText: "z.string()",
-  multilineText: "z.string()",
-  richText: "z.string()",
-  url: "z.string()",
-  email: "z.string()",
-  phoneNumber: "z.string()",
-  number: "z.number()",
-  checkbox: "z.boolean()",
-  date: "z.string()",
-  dateTime: "z.string()",
-  default: "z.any()",
-}
-
 export type TransformedTable = {
   id: string
   fields: Record<string, Field>
+}
+
+export interface Arguments {
+  apiKey: string
+  baseId: string
+  baseName?: string
+  tableIds?: string[]
+  outDir?: string
+  schemaOutDir?: string
+  accessorOutDir?: string
+  verbose?: boolean
+}
+
+export interface WriteFileOptions {
+  filePath?: string
+  filename: string
+  content: string
 }

@@ -1,11 +1,12 @@
 import pluralize from "pluralize"
 
-import { Field, FIELD_TYPE_MAP, Table } from "../../types"
+import { FIELD_TYPE_MAP } from "../constants"
+import { Field, Table } from "../types"
 import {
   capitalizeFirstLetter,
   escapeQuotes,
   sanitizeString,
-} from "../../utils/string-util"
+} from "../utils/string-util"
 
 export default class AirtableZodSchema {
   private tableName: string
@@ -54,7 +55,7 @@ export default class AirtableZodSchema {
       .join(",\n  ")
   }
 
-  public create(): string {
+  public generate(): string {
     return `export const ${this.tableName}Schema = z.object({\n  ${this.schemaFields}\n}).transform(obj => ({\n  ${this.transformedFields}\n}))\nexport type ${capitalizeFirstLetter(this.tableName)}Schema = z.infer<typeof ${this.tableName}Schema>`
   }
 }

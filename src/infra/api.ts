@@ -1,12 +1,13 @@
-import { API_KEY } from "./config"
-import { Table } from "../types"
+import { Arguments, Table } from "../types"
 
-export async function getTables(baseId: string) {
+export async function getTables({ baseId, apiKey, tableIds }: Arguments) {
   const response = await fetch(
     `https://api.airtable.com/v0/meta/bases/${baseId}/tables`,
     {
-      headers: { Authorization: `Bearer ${API_KEY}` },
+      headers: { Authorization: `Bearer ${apiKey}` },
     },
   )
-  return (await response.json()).tables as Table[]
+  const tables = (await response.json()).tables as Table[]
+  if (tableIds) return tables.filter((t) => tableIds.includes(t.id))
+  return tables
 }
