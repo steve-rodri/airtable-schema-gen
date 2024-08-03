@@ -29,9 +29,7 @@ export default class SchemaGenerator {
       const content = this.generateFileContent()
       const outDir = args.schemaOutDir ?? args.outDir
       writeFileToPath({ filePath: outDir, filename, content })
-      console.info(
-        `Zod schemas for all tables in ${base.name} generated in dist/${filename}`,
-      )
+      console.info(`Generated Zod schemas for all tables in ${base.name}`)
     } catch (err) {
       console.error("Error generating Zod schemas:", err)
     }
