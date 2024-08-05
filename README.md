@@ -1,7 +1,7 @@
 # Airtable to Zod Code Generator
 
 An Airtable to Zod Code Generator that generates zod schemas for Airtable
-tables.
+records.
 
 We also ship an accessor to handle Airtable's JS SDK.
 
