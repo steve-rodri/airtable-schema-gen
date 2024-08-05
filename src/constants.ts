@@ -2,15 +2,15 @@ export const FILE_HEADER =
   "/* THIS FILE WAS AUTO GENERATED USING A SCRIPT. DO NOT EDIT MANUALLY.*/\n\n"
 
 export const FIELD_TYPE_MAP: Record<string, string> = {
-  singleLineText: "z.string()",
-  multilineText: "z.string()",
-  richText: "z.string()",
-  url: "z.string()",
-  email: "z.string()",
-  phoneNumber: "z.string()",
-  number: "z.number()",
-  checkbox: "z.boolean()",
-  date: "z.string()",
-  dateTime: "z.string()",
-  default: "z.any()",
+  singleLineText: "z.string().optional()",
+  multilineText: "z.string().optional()",
+  richText: "z.string().optional()",
+  url: "z.string().optional()",
+  email: "z.string().optional()",
+  phoneNumber: "z.string().optional()",
+  number: "z.number().optional()",
+  checkbox: "z.boolean().optional()",
+  date: "z.string().optional()",
+  dateTime: "z.string().optional()",
+  default: "z.any().optional()",
 }
