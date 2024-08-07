@@ -24,7 +24,9 @@ export default class AirtableZodSchema {
     if (field.type === "singleSelect") {
       return `z.enum(["${field.options.choices.map((c) => c.name).join('","')}"])`
     }
-
+    if (field.type === "multipleSelects") {
+      return `z.array(z.enum(["${field.options.choices.map((c) => c.name).join('","')}"]))`
+    }
     return FIELD_TYPE_MAP[field.type] || FIELD_TYPE_MAP.default
   }
 

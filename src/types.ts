@@ -13,33 +13,47 @@ export interface Table {
 
 export type FieldType = keyof typeof FIELD_TYPE_MAP
 
-export type SingleSelectChoice = {
+export interface SelectChoice {
   id: string
   name: string
   color: string
 }
 
-export type SingleSelectOptions = {
-  choices: SingleSelectChoice[]
+export interface SelectOptions {
+  choices: SelectChoice[]
 }
 
-export interface SingleSelectField {
+export interface MultipeRecordLinksOptions {
+  linkedTableId: string
+  isReversed: boolean
+  prefersSingleRecordLink: boolean
+  inverseLinkFieldId: string
+}
+
+export interface MultipeRecordLinksField {
   id: string
   name: string
-  type: "singleSelect"
-  options: SingleSelectOptions
+  type: "multipleRecordLinks"
+  options: MultipeRecordLinksOptions
+}
+
+export interface SelectField {
+  id: string
+  name: string
+  type: "singleSelect" | "multipleSelects"
+  options: SelectOptions
 }
 
 export interface GenericField {
   id: string
   name: string
-  type: Exclude<FieldType, "singleSelect">
+  type: Exclude<FieldType, "singleSelect" | "multipleSelects">
   options?: { [key: string]: any }
 }
 
-export type Field = SingleSelectField | GenericField
+export type Field = SelectField | GenericField
 
-export type TransformedTable = {
+export interface TransformedTable {
   id: string
   fields: Record<string, Field>
 }
