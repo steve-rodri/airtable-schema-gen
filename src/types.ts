@@ -23,18 +23,18 @@ export interface SelectOptions {
   choices: SelectChoice[]
 }
 
-export interface MultipeRecordLinksOptions {
+export interface MultipleRecordLinksOptions {
   linkedTableId: string
   isReversed: boolean
   prefersSingleRecordLink: boolean
   inverseLinkFieldId: string
 }
 
-export interface MultipeRecordLinksField {
+export interface MultipleRecordLinksField {
   id: string
   name: string
   type: "multipleRecordLinks"
-  options: MultipeRecordLinksOptions
+  options: MultipleRecordLinksOptions
 }
 
 export interface SelectField {
@@ -47,11 +47,14 @@ export interface SelectField {
 export interface GenericField {
   id: string
   name: string
-  type: Exclude<FieldType, "singleSelect" | "multipleSelects">
+  type: Exclude<
+    FieldType,
+    "singleSelect" | "multipleSelects" | "multipleRecordLinks"
+  >
   options?: { [key: string]: any }
 }
 
-export type Field = SelectField | GenericField
+export type Field = GenericField | SelectField | MultipleRecordLinksField
 
 export interface TransformedTable {
   id: string

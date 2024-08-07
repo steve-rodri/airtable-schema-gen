@@ -1,7 +1,7 @@
 import pluralize from "pluralize"
 
 import { FIELD_TYPE_MAP } from "../constants"
-import { Field, FieldType, Table } from "../types"
+import { Field, Table } from "../types"
 import {
   capitalizeFirstLetter,
   escapeQuotes,
@@ -22,12 +22,15 @@ export default class AirtableZodSchema {
 
   private mapFieldTypeToZodType(field: Field): string {
     if (field.type === "singleSelect") {
-      return `z.enum(["${field.options.choices.map((c) => c.name).join('","')}"])`
+      return `z.enum(["${field.options.choices.map((c) => c.name).join('","')}"]),`
     }
     if (field.type === "multipleSelects") {
-      return `z.array(z.enum(["${field.options.choices.map((c) => c.name).join('","')}"]))`
+      return `z.array(z.enum(["${field.options.choices.map((c) => c.name).join('","')}"])),`
     }
-    return FIELD_TYPE_MAP[field.type] || FIELD_TYPE_MAP.default
+    if (field.type === "multipleRecordLinks") {
+      return `z.string().array().optional(), // linkedTableId: ${field.options.linkedTableId}`
+    }
+    return (FIELD_TYPE_MAP[field.type] || FIELD_TYPE_MAP.default) + ","
   }
 
   private getSanitizedTableName(tableName: string): string {
@@ -48,7 +51,7 @@ export default class AirtableZodSchema {
   private generateSchemaFields(uniqueFields: Field[]): string {
     return uniqueFields
       .map((field) => this.generateSchemaField(field))
-      .join(",\n  ")
+      .join("\n  ")
   }
 
   private generateTransformedField(field: Field): string {
