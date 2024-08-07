@@ -1,7 +1,7 @@
 export const FILE_HEADER =
   "/* THIS FILE WAS AUTO GENERATED USING A SCRIPT. DO NOT EDIT MANUALLY.*/\n\n"
 
-export const FIELD_TYPE_MAP: Record<string, string> = {
+export const FIELD_TYPE_MAP = {
   singleLineText: "z.string().optional()",
   multilineText: "z.string().optional()",
   richText: "z.string().optional()",
@@ -28,7 +28,7 @@ export const FIELD_TYPE_MAP: Record<string, string> = {
   multipleSelects: "z.string().array().optional()",
   multipleRecordLinks: "z.string().array().optional()",
   default: "z.any().optional()",
-}
+} as const
 
 // multipleLookupValues
 // multipleAttachments

@@ -1,7 +1,7 @@
 import pluralize from "pluralize"
 
 import { FIELD_TYPE_MAP } from "../constants"
-import { Field, Table } from "../types"
+import { Field, FieldType, Table } from "../types"
 import {
   capitalizeFirstLetter,
   escapeQuotes,
@@ -20,8 +20,12 @@ export default class AirtableZodSchema {
     this.transformedFields = this.generateTransformedFields(uniqueFields)
   }
 
-  private mapFieldTypeToZodType(fieldType: string): string {
-    return FIELD_TYPE_MAP[fieldType] || FIELD_TYPE_MAP.default
+  private mapFieldTypeToZodType(field: Field): string {
+    if (field.type === "singleSelect") {
+      return `z.enum(["${field.options.choices.map((c) => c.name).join('","')}"])`
+    }
+
+    return FIELD_TYPE_MAP[field.type] || FIELD_TYPE_MAP.default
   }
 
   private getSanitizedTableName(tableName: string): string {
@@ -36,7 +40,7 @@ export default class AirtableZodSchema {
   }
 
   private generateSchemaField(field: Field): string {
-    return `"${escapeQuotes(field.name)}": ${this.mapFieldTypeToZodType(field.type)}`
+    return `"${escapeQuotes(field.name)}": ${this.mapFieldTypeToZodType(field)}`
   }
 
   private generateSchemaFields(uniqueFields: Field[]): string {
