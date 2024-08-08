@@ -22,10 +22,10 @@ export default class AirtableZodSchema {
 
   private mapFieldTypeToZodType(field: Field): string {
     if (field.type === "singleSelect") {
-      return `z.enum(["${field.options.choices.map((c) => c.name).join('","')}"]),`
+      return `z.enum(["${field.options.choices.map((c) => c.name).join('","')}"]).optional(),`
     }
     if (field.type === "multipleSelects") {
-      return `z.array(z.enum(["${field.options.choices.map((c) => c.name).join('","')}"])),`
+      return `z.array(z.enum(["${field.options.choices.map((c) => c.name).join('","')}"])).optional(),`
     }
     if (field.type === "multipleRecordLinks") {
       return `z.string().array().optional(), // linkedTableId: ${field.options.linkedTableId}`

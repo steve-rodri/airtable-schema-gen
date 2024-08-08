@@ -24,9 +24,6 @@ export const FIELD_TYPE_MAP = {
     "z.union([z.string(), z.number(), z.array(z.union([z.string(), z.number()])), z.object({}).catchall(z.any())]).optional()",
   rollup: "z.union([z.string(), z.number()]).optional()",
   lookup: "z.string().optional()",
-  singleSelect: "z.string().optional()",
-  multipleSelects: "z.string().array().optional()",
-  multipleRecordLinks: "z.string().array().optional()",
   default: "z.any().optional()",
 } as const
 
