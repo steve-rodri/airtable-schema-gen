@@ -21,7 +21,7 @@ export const FIELD_TYPE_MAP = {
   createdBy:
     "z.object({ id: z.string(), name: z.string(), email: z.string() }).optional()",
   formula:
-    "z.union([z.string(), z.number(), z.array(z.union([z.string(), z.number()]))]).optional()",
+    "z.union([z.string(), z.number(), z.array(z.union([z.string(), z.number()])), z.object({}).catchall(z.any())]).optional()",
   rollup: "z.union([z.string(), z.number()]).optional()",
   lookup: "z.string().optional()",
   singleSelect: "z.string().optional()",
