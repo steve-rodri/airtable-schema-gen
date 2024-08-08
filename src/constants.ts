@@ -16,7 +16,7 @@ export const FIELD_TYPE_MAP = {
   lastModifiedTime: "z.string().optional()",
   percent: "z.number().optional()",
   rating: "z.number().min(1).optional()",
-  currency: "z.number().positive().optional()",
+  currency: "z.number().optional()",
   button: "z.object({ label: z.string(), url: z.string() }).optional()",
   createdBy:
     "z.object({ id: z.string(), name: z.string(), email: z.string() }).optional()",
