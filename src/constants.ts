@@ -17,9 +17,10 @@ export const FIELD_TYPE_MAP = {
   percent: "z.number().optional()",
   rating: "z.number().min(1).optional()",
   currency: "z.number().optional()",
-  button: "z.object({ label: z.string(), url: z.string() }).optional()",
+  button:
+    "z.object({ label: z.string().nullish(), url: z.string().nullish() }).optional()",
   createdBy:
-    "z.object({ id: z.string(), name: z.string(), email: z.string() }).optional()",
+    "z.object({ id: z.string().nullish(), name: z.string().nullish(), email: z.string().nullish() }).optional()",
   formula:
     "z.union([z.string(), z.number(), z.array(z.union([z.string(), z.number()])), z.object({}).catchall(z.any())]).optional()",
   rollup: "z.union([z.string(), z.number()]).optional()",
